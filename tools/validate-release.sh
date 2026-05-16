@@ -37,8 +37,8 @@ NODE
 
 echo "== Source / build config =="
 GR=android/app/build.gradle
-grep -q 'versionName "1.0.1"' $GR && ok "versionName 1.0.1" || bad "versionName not 1.0.1"
-grep -q 'versionCode 101' $GR && ok "versionCode 101" || bad "versionCode not 101"
+grep -q 'versionName "1.0.2"' $GR && ok "versionName 1.0.2" || bad "versionName not 1.0.2"
+grep -q 'versionCode 102' $GR && ok "versionCode 102" || bad "versionCode not 102"
 grep -q 'applicationId "com.wgra.spotthescam"' $GR && ok "appId com.wgra.spotthescam" || bad "appId wrong"
 grep -q 'debuggable false' $GR && ok "release debuggable false" || bad "release not debuggable false"
 grep -q 'minifyEnabled true' $GR && ok "minify enabled" || bad "minify not enabled"
@@ -68,13 +68,13 @@ grep -q 'WGRALGO' CONTRIBUTORS.md && grep -q 'ChatGPT' CONTRIBUTORS.md && grep -
 
 echo "== License (GPLv3) =="
 grep -q '"license": "GPL-3.0-only"' package.json && ok "package.json license GPL-3.0-only" || bad "package.json license not GPL-3.0-only"
-grep -q '"version": "1.0.1"' package.json && ok "package.json version 1.0.1" || bad "package.json version not 1.0.1"
+grep -q '"version": "1.0.2"' package.json && ok "package.json version 1.0.2" || bad "package.json version not 1.0.2"
 grep -q 'GNU GENERAL PUBLIC LICENSE' LICENSE && grep -q 'Version 3' LICENSE \
   && ok "LICENSE contains GPLv3 text" || bad "LICENSE missing GPLv3 text"
 grep -q 'MIT License' LICENSE && bad "LICENSE still contains MIT text" || ok "LICENSE has no MIT text"
 grep -Eq '\bMIT\b|\bISC\b' README.md && bad "README mentions MIT/ISC" || ok "README has no MIT/ISC"
 grep -q 'GNU General Public License v3' README.md && ok "README states GPLv3" || bad "README missing GPLv3 statement"
-grep -q '1.0.1' README.md && ok "README version 1.0.1" || bad "README missing 1.0.1"
+grep -q '1.0.2' README.md && ok "README version 1.0.2" || bad "README missing 1.0.2"
 if grep -E "classpath ['\"]com\.google\.gms:google-services" android/build.gradle | grep -vq '^\s*//'; then
   bad "active google-services classpath present"
 else
@@ -90,8 +90,8 @@ if [ "${1:-}" != "" ] && [ -f "${1:-}" ]; then
   AAPT="$BT/aapt2"; APKSIGNER="$BT/apksigner"
   if [ -x "$AAPT" ]; then
     DUMP=$("$AAPT" dump badging "$APK" 2>/dev/null)
-    echo "$DUMP" | grep -q "versionName='1.0.1'" && ok "APK versionName 1.0.1" || bad "APK versionName wrong"
-    echo "$DUMP" | grep -q "versionCode='101'" && ok "APK versionCode 101" || bad "APK versionCode wrong"
+    echo "$DUMP" | grep -q "versionName='1.0.2'" && ok "APK versionName 1.0.2" || bad "APK versionName wrong"
+    echo "$DUMP" | grep -q "versionCode='102'" && ok "APK versionCode 102" || bad "APK versionCode wrong"
     echo "$DUMP" | grep -q "package: name='com.wgra.spotthescam'" && ok "APK package id" || bad "APK package id wrong"
     echo "$DUMP" | grep -q "uses-permission: name='android.permission.INTERNET'" \
       && bad "APK declares INTERNET" || ok "APK has no INTERNET permission"
