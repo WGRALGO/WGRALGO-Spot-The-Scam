@@ -1,5 +1,12 @@
 # Third-Party Notices
 
+Spot the Scam (the project) is licensed under the **GNU General Public License
+v3.0** (GPL-3.0-only). The GPLv3 applies to this project's own code and
+content. It does **not** relicense the third-party dependencies below — each
+dependency keeps its own license (MIT, Apache-2.0, EPL-1.0). Those permissive
+licenses are compatible with GPLv3 distribution; the combined work is
+distributed under GPLv3 while each component retains its original license.
+
 Spot the Scam bundles or builds against the following open-source components.
 Only components actually used by the APK are listed.
 
@@ -27,9 +34,10 @@ Only components actually used by the APK are listed.
 
 ## Notes
 
-- The `com.google.gms:google-services` Gradle classpath is present in the
-  default Capacitor scaffold but is **not applied** — no `google-services.json`
-  exists and no Google/Firebase services are used.
+- The `com.google.gms:google-services` Gradle classpath and the default
+  Capacitor `apply plugin: 'com.google.gms.google-services'` hook have been
+  **removed** as of v1.0.1. No `google-services.json` exists and no
+  Google/Firebase services are used.
 - The Cordova Android plugin bridge module is included by the Capacitor
   scaffold; no Cordova plugins are bundled.
 - No analytics, advertising, tracking, or crash-reporting libraries are

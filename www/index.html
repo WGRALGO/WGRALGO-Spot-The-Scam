@@ -445,7 +445,7 @@
     </section>
 
     <div class="wgra-footer-note">
-      Spot the Scam v1.0.0 &middot; WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.<br>
+      Spot the Scam v1.0.1 &middot; WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.<br>
       For education and awareness only. Not professional financial, legal, cybersecurity, or law-enforcement advice.
     </div>
 
@@ -457,7 +457,7 @@
   <div class="wgra-modal">
     <h3>About</h3>
     <p>Spot the Scam is a free educational scam-awareness game created by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc. It helps users practice spotting common red flags in scams involving money, identity, jobs, banking, delivery messages, fake prizes, tech support, and urgent payment demands.</p>
-    <p class="muted">Spot the Scam v1.0.0 &mdash; a free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
+    <p class="muted">Spot the Scam v1.0.1 &mdash; a free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
     <button class="wgra-btn wgra-btn-ghost wgra-modal-close" data-close>Close</button>
   </div>
 </div>
@@ -483,7 +483,7 @@
 <div id="wgra-modal-credits" class="wgra-modal-overlay" role="dialog" aria-modal="true" aria-label="Credits">
   <div class="wgra-modal">
     <h3>Credits</h3>
-    <p><strong>Spot the Scam v1.0.0</strong><br>A free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
+    <p><strong>Spot the Scam v1.0.1</strong><br>A free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
     <p><strong>Contributors</strong></p>
     <ul>
       <li><strong>WGRALGO</strong> &mdash; Project owner, creator, maintainer, content direction, testing, and public-benefit mission.</li>
@@ -502,106 +502,1027 @@
 
   /* ===== 100-scenario pool ===== */
   var scenarios = [
-    /* 1 */ { text: "An email claims to be from your bank:\n\n\"Click this link urgently to verify your login or your account will be locked.\"\n\nSender: security@bank-support-secure.com", correct: "risky", explanation: "Banks do not pressure you with urgent login links. A strange email address plus urgency is a classic phishing sign.", difficulty: 1 },
-    /* 2 */ { text: "Your banking app notifies you inside the official app:\n\n\"We detected a small charge. Was this you?\"\n\nYou review the charge in the app and tap “No” if it is not you.", correct: "safe", explanation: "Checking and confirming transactions inside your official banking app is a safe, recommended practice.", difficulty: 1 },
-    /* 3 */ { text: "\"You have WON a $1,000 gift card! Send a $25 fee via Zelle or Cash App to claim your prize right now!\"", correct: "risky", explanation: "Real prizes never require upfront fees. Zelle/Cash App requests are red flags.", difficulty: 1 },
-    /* 4 */ { text: "A caller says they are from \"Social Security Investigations\" and claims:\n\n\"Your Social Security number is suspended. Verify it now or lose benefits.\"", correct: "risky", explanation: "The SSA never suspends SSNs or demands verification by phone.", difficulty: 1 },
-    /* 5 */ { text: "A “recruiter” messages you about a job paying double the normal rate.\nThey send a check and ask you to buy gift cards and send the codes.", correct: "risky", explanation: "Overpayment scams always involve fake checks and gift card requests.", difficulty: 1 },
-    /* 6 */ { text: "You receive a letter from your current mortgage company with your real loan number.\nIt does not demand urgent payment, does not ask you to call a new number, and the details match your official mortgage statement.", correct: "safe", explanation: "This appears safe because it matches known account information and does not pressure you to pay or contact a new source. When unsure, verify through the number or website on your official statement.", difficulty: 2 },
-    /* 7 */ { text: "A salesperson offers you a reverse mortgage and says:\n\n\"Sign today to lock in a special rate — don’t worry about the fine print.\"", correct: "risky", explanation: "High-pressure tactics are major red flags in lending.", difficulty: 2 },
-    /* 8 */ { text: "You type your investment website's URL manually, see https + lock icon, and use two-factor authentication.", correct: "safe", explanation: "Typing the URL and enabling 2FA are safe habits.", difficulty: 1 },
-    /* 9 */ { text: "A charity email asks for cryptocurrency donations after a disaster.", correct: "risky", explanation: "Legitimate charities rarely ask for crypto to random wallet addresses.", difficulty: 2 },
-    /* 10 */ { text: "Your \"grandchild\" texts from a new number asking for emergency money and says not to call their parents.", correct: "risky", explanation: "This is the classic grandparent scam. Always verify.", difficulty: 1 },
-    /* 11 */ { text: "A text says your Amazon order can't be delivered.\nLink: http://amaz0n-verify-orders.com", correct: "risky", explanation: "Lookalike domains with subtle misspellings indicate a phishing scam.", difficulty: 2 },
-    /* 12 */ { text: "You get an email receipt for a subscription you never purchased, with a number to call to cancel.", correct: "risky", explanation: "Fake invoices lead to scam call centers.", difficulty: 2 },
-    /* 13 */ { text: "A neighbor you know personally asks to borrow money for groceries.", correct: "safe", explanation: "Personal in-person requests without digital elements are not scams.", difficulty: 1 },
-    /* 14 */ { text: "An email from 'PayPaI Support' uses a capital I instead of L.", correct: "risky", explanation: "Scammers use near-identical spoofed names.", difficulty: 2 },
-    /* 15 */ { text: "A text claims your driver’s license is suspended if you don’t click a provided link.", correct: "risky", explanation: "DMVs do not suspend licenses via text.", difficulty: 2 },
-    /* 16 */ { text: "You call your bank using the number printed on your card and speak to a rep.", correct: "safe", explanation: "Calling numbers YOU dial from official sources is safe.", difficulty: 1 },
-    /* 17 */ { text: "Your phone carrier says your bill is overdue and uses a .xyz link.", correct: "risky", explanation: "Official companies don’t use random cheap domains.", difficulty: 2 },
-    /* 18 */ { text: "Your Netflix account payment supposedly failed, and the email directs you to a link not ending in netflix.com.", correct: "risky", explanation: "Mismatched domains indicate phishing.", difficulty: 2 },
-    /* 19 */ { text: "A nonprofit you donated to last year emails you from its verified domain.", correct: "safe", explanation: "Past, verified organizations regularly send donation emails.", difficulty: 1 },
-    /* 20 */ { text: "A Facebook friend asks for emergency money — but their message doesn’t sound like them.", correct: "risky", explanation: "Hacked accounts often send urgent requests.", difficulty: 2 },
-    /* 21 */ { text: "A website offers extremely discounted shoes and was created 2 weeks ago.", correct: "risky", explanation: "New domains + unrealistic discounts = scam store.", difficulty: 2 },
-    /* 22 */ { text: "You get a PDF invoice for something you never bought.", correct: "risky", explanation: "Unsolicited attachments often carry malware.", difficulty: 2 },
-    /* 23 */ { text: "A family member asks for your new phone number with no links or requests.", correct: "safe", explanation: "No phishing elements present.", difficulty: 1 },
-    /* 24 */ { text: "An automated call says you qualify for a government grant — press 1 to claim.", correct: "risky", explanation: "The government doesn't award grants by robocall.", difficulty: 1 },
-    /* 25 */ { text: "Your debit card company sends a fraud alert inside the official banking app asking whether a small suspicious charge was yours.", correct: "safe", explanation: "Fraud alerts inside the official app are a safer way to confirm suspicious activity. Never share codes, PINs, or passwords by text or phone.", difficulty: 2 },
-    /* 26 */ { text: "A PDF labeled “Property Tax Refund” arrives unexpectedly.", correct: "risky", explanation: "Scammers use tax paperwork to steal info.", difficulty: 2 },
-    /* 27 */ { text: "You receive a welcome email from a site you signed up for earlier today.", correct: "safe", explanation: "Confirmation emails you initiated are safe.", difficulty: 1 },
-    /* 28 */ { text: "\"Your package is waiting. Pay $3 redelivery fee here: usps-redelivery-update.com\"", correct: "risky", explanation: "USPS does not charge fees through text links.", difficulty: 1 },
-    /* 29 */ { text: "A caller pretending to be police demands gift card payment for a fine.", correct: "risky", explanation: "Police don’t collect payments by phone or gift card.", difficulty: 1 },
-    /* 30 */ { text: "You manually access irs.gov yourself to read tax information.", correct: "safe", explanation: "Direct navigation to official sites is safe.", difficulty: 1 },
-    /* 31 */ { text: "\"Same-day $5,000 loan! No credit check! Pay $50 processing fee!\"", correct: "risky", explanation: "Advance-fee loans are illegal scams.", difficulty: 2 },
-    /* 32 */ { text: "Your bank emails your monthly statement from its official domain.", correct: "safe", explanation: "Regular statements from verified domains are safe.", difficulty: 1 },
-    /* 33 */ { text: "A stranger messages you claiming they sent you money on Cash App by mistake and want it refunded.", correct: "risky", explanation: "Refund scams rely on fraudulent initial payments.", difficulty: 2 },
-    /* 34 */ { text: "\"Your Apple ID has been locked. Verify now: apple-securecenter.com\"", correct: "risky", explanation: "Fake Apple domains are common.", difficulty: 2 },
-    /* 35 */ { text: "You receive a password-reset email from a site after YOU initiated it.", correct: "safe", explanation: "Reset emails you requested are safe.", difficulty: 1 },
-    /* 36 */ { text: "A recruiter messages you on LinkedIn from a real company domain. Instead of giving personal information in the chat, you manually visit the company’s official careers page and find the same job posted there.", correct: "safe", explanation: "Verifying the job through the official company careers page is safer than trusting links or attachments in a message.", difficulty: 2 },
-    /* 37 */ { text: "\"Your bank account is frozen. Confirm username and password urgently.\"\nFrom a Gmail address.", correct: "risky", explanation: "Banks never email from Gmail.", difficulty: 2 },
-    /* 38 */ { text: "A caller threatens to disconnect your electricity unless you pay immediately with Zelle.", correct: "risky", explanation: "Utility companies do not demand instant electronic payments.", difficulty: 2 },
-    /* 39 */ { text: "Your doctor’s office sends an appointment reminder for a date you booked.", correct: "safe", explanation: "Healthcare reminders are normal.", difficulty: 1 },
-    /* 40 */ { text: "A pop-up claims Microsoft detected a virus and urges you to call a phone number.", correct: "risky", explanation: "Microsoft does not issue pop-up warnings.", difficulty: 2 },
-    /* 41 */ { text: "A friend’s Instagram account advertises a crypto doubling scheme.", correct: "risky", explanation: "Crypto “flip” scams use hacked accounts.", difficulty: 2 },
-    /* 42 */ { text: "A verified nonprofit posts a fundraiser using its official social media account.", correct: "safe", explanation: "Verified accounts are trustworthy.", difficulty: 1 },
-    /* 43 */ { text: "\"Claim your free iPhone! Pay $12 shipping to receive it.\"", correct: "risky", explanation: "Prizes requiring payment are scams.", difficulty: 1 },
-    /* 44 */ { text: "Your employer emails you from the official company domain about required training.", correct: "safe", explanation: "Official HR communication is legitimate.", difficulty: 1 },
-    /* 45 */ { text: "\"This is the IRS. Pay now or face immediate arrest.\"", correct: "risky", explanation: "The IRS never threatens arrest by phone.", difficulty: 1 },
-    /* 46 */ { text: "Your credit card app alerts you to a suspicious purchase and asks you to confirm through the app.", correct: "safe", explanation: "Secure app alerts are legitimate.", difficulty: 1 },
-    /* 47 */ { text: "A fake PayPal message uses a domain like paypal-resolution-center.net.", correct: "risky", explanation: "PayPal only uses paypal.com or paypalobjects.com.", difficulty: 2 },
-    /* 48 */ { text: "Your bank declines a suspicious charge while you’re traveling and notifies you in-app.", correct: "safe", explanation: "Banks monitor out-of-state charges.", difficulty: 1 },
-    /* 49 */ { text: "\"You have an unclaimed inheritance. Provide your SSN to release the funds.\"", correct: "risky", explanation: "Inheritance scams steal identities.", difficulty: 2 },
-    /* 50 */ { text: "Your email provider warns your inbox is nearly full and directs you to upgrade storage through the official domain.", correct: "safe", explanation: "Storage notices from verified domains are safe.", difficulty: 1 },
-    /* 51 */ { text: "A buyer on Facebook Marketplace sends extra money and asks you to refund the difference through Zelle or Cash App.", correct: "risky", explanation: "Overpayment scams depend on fake payment reversals.", difficulty: 3 },
-    /* 52 */ { text: "Your bank texts you about a locked account, but the link uses a misspelled version of the bank’s domain.", correct: "risky", explanation: "Lookalike domains attempt to steal credentials.", difficulty: 3 },
-    /* 53 */ { text: "Your child’s school emails you using its official district domain with schedule updates.", correct: "safe", explanation: "Schools use verified domains for communication.", difficulty: 1 },
-    /* 54 */ { text: "A caller claiming to be your bank asks for your debit card PIN to verify your identity.", correct: "risky", explanation: "Banks never ask for your PIN under any circumstances.", difficulty: 3 },
-    /* 55 */ { text: "You verify a family member’s medical fundraiser by speaking to them directly before donating.", correct: "safe", explanation: "Direct confirmation ensures legitimacy.", difficulty: 1 },
-    /* 56 */ { text: "\"Your Social Security benefits will increase. Confirm your personal information to process the update.\"", correct: "risky", explanation: "SSA does not request personal info through unsolicited messages.", difficulty: 2 },
-    /* 57 */ { text: "A pop-up on a website claims your smartphone is infected and urges immediate action.", correct: "risky", explanation: "Pop-up virus warnings are fake — designed to install malware.", difficulty: 2 },
-    /* 58 */ { text: "Your credit card app alerts you about a suspicious transaction and offers buttons INSIDE the app to confirm or deny it.", correct: "safe", explanation: "Banks use secure in-app alerts for verification.", difficulty: 1 },
-    /* 59 */ { text: "\"Unauthorized login attempt detected. Log in at: bank-login-security-check.com to secure your account.\"", correct: "risky", explanation: "Fake domains commonly mimic bank security alerts.", difficulty: 3 },
-    /* 60 */ { text: "You see a QR code flyer claiming to offer free gift cards for scanning.", correct: "risky", explanation: "Random QR codes may lead to phishing or malware.", difficulty: 3 },
-    /* 61 */ { text: "\"We detected unusual activity on your Zelle account. Verify by entering your bank login information here.\"", correct: "risky", explanation: "Zelle never asks for bank logins outside official channels.", difficulty: 3 },
-    /* 62 */ { text: "Your HR department emails you from the company domain and tells you to log into the official HR/payroll portal you already use to update onboarding tax documents.", correct: "safe", explanation: "Updating tax documents through a known official HR portal is safer than sending personal documents by email or through unknown links.", difficulty: 2 },
-    /* 63 */ { text: "A random person on Cash App claims they sent you money by mistake and wants a refund.", correct: "risky", explanation: "Common Cash App refund scam involving fraudulent initial transactions.", difficulty: 3 },
-    /* 64 */ { text: "\"Your car warranty has expired. Renew immediately to avoid lapse!\" Caller refuses to provide company details.", correct: "risky", explanation: "Warranty robocalls are high-volume scams.", difficulty: 2 },
-    /* 65 */ { text: "A trusted family member sends you a video you were expecting with no suspicious links or requests.", correct: "safe", explanation: "Direct communication without malicious links is safe.", difficulty: 1 },
-    /* 66 */ { text: "An email says you missed jury duty and must pay a fine online to avoid arrest.", correct: "risky", explanation: "Courts do not issue fines via email.", difficulty: 3 },
-    /* 67 */ { text: "\"Your Geek Squad subscription has been renewed for $349. Call immediately to cancel.\" Caller wants remote access to your computer.", correct: "risky", explanation: "Tech support scams often impersonate major brands.", difficulty: 3 },
-    /* 68 */ { text: "\"You qualify for federal loan forgiveness. Pay a $99 processing fee to enroll today.\"", correct: "risky", explanation: "Federal forgiveness programs do not require upfront payment.", difficulty: 3 },
-    /* 69 */ { text: "Your online pharmacy sends a refill reminder for medication you actually requested.", correct: "safe", explanation: "Expected prescription reminders are legitimate.", difficulty: 1 },
-    /* 70 */ { text: "A scammer claiming to be Apple Support says your iCloud was hacked and directs you to a special site.", correct: "risky", explanation: "Apple does not call users with unsolicited security alerts.", difficulty: 3 },
-    /* 71 */ { text: "\"You won a luxury vacation! Pay taxes and fees today to claim your trip.\"", correct: "risky", explanation: "Prize scams always require upfront fees.", difficulty: 2 },
-    /* 72 */ { text: "Your credit union sends a secure message inside your online banking platform asking you to verify a new login.", correct: "safe", explanation: "Banks use internal secure messaging for sensitive alerts.", difficulty: 2 },
-    /* 73 */ { text: "\"We updated our privacy policy. Click here to continue accessing your account.\" Link is shortened and unrecognizable.", correct: "risky", explanation: "Scammers use vague notices to lure victims into fake login portals.", difficulty: 3 },
-    /* 74 */ { text: "A rental listing requires a deposit before you can tour the unit.", correct: "risky", explanation: "Scammers frequently demand deposits before viewings.", difficulty: 3 },
-    /* 75 */ { text: "Your dentist’s office texts you the same appointment reminder format you are used to.", correct: "safe", explanation: "Consistent communication is a positive sign.", difficulty: 1 },
-    /* 76 */ { text: "\"Your package is on hold due to unpaid customs fees. Pay now to release.\"", correct: "risky", explanation: "Scammers impersonate customs and delivery services.", difficulty: 2 },
-    /* 77 */ { text: "A caller claims to be from your bank’s fraud department and asks for the last four digits of your SSN. You did not call them first.", correct: "risky", explanation: "Banks do not request SSN details over unsolicited calls.", difficulty: 3 },
-    /* 78 */ { text: "A retailer emails you a promo code after you signed up for their newsletter.", correct: "safe", explanation: "Legitimate marketing emails come from official opt-ins.", difficulty: 1 },
-    /* 79 */ { text: "A caller claiming to be from the county clerk’s office demands prepaid cards for “court fees.”", correct: "risky", explanation: "Government agencies do not accept prepaid cards.", difficulty: 2 },
-    /* 80 */ { text: "Your cell phone carrier sends your monthly bill through its official domain.", correct: "safe", explanation: "Regular billing statements are legitimate.", difficulty: 1 },
-    /* 81 */ { text: "\"Unusual login attempt from overseas detected. Confirm your credentials to continue using your account.\"", correct: "risky", explanation: "Sophisticated scammers mimic real alerts.", difficulty: 3 },
-    /* 82 */ { text: "A scammer sends you a picture of a fake Amazon return label demanding address confirmation.", correct: "risky", explanation: "Fraudsters fabricate shipping problems to phish for info.", difficulty: 3 },
-    /* 83 */ { text: "\"Get $500 instantly! Only available for the next 5 minutes!\"", correct: "risky", explanation: "High-pressure giveaways are scam tactics.", difficulty: 2 },
-    /* 84 */ { text: "Your pharmacy texts you that your prescription is ready — matching medication you actually take.", correct: "safe", explanation: "Expected pharmacy notifications are legitimate.", difficulty: 1 },
-    /* 85 */ { text: "A caller tells you to “reverse” a fraudulent Zelle transfer by sending money to yourself.", correct: "risky", explanation: "Banks never instruct customers to send money to themselves.", difficulty: 4 },
-    /* 86 */ { text: "An email from your real bank domain warns of a new login and shows a link that appears correct. Hovering reveals a redirect to a foreign domain.", correct: "risky", explanation: "Sophisticated phishers spoof visible URLs — hovering exposes the true destination.", difficulty: 5 },
-    /* 87 */ { text: "A caller knows your insurance policy number, address, and claim history, and asks to confirm your birthdate “for security.”", correct: "risky", explanation: "Scammers often purchase detailed data from breaches — do not confirm DOB to unsolicited callers.", difficulty: 5 },
-    /* 88 */ { text: "A credit report website looks identical to a real bureau. HTTPS is present, and it has a privacy policy — but the company name is slightly off.", correct: "risky", explanation: "Cloned websites with minor name variations harvest SSNs.", difficulty: 5 },
-    /* 89 */ { text: "You receive a DocuSign email you were expecting, but the subject line format is slightly different from your company’s usual template.", correct: "risky", explanation: "Even expected DocuSign messages should be verified if the format looks unusual. Do not click until you confirm through the sender or your official account.", difficulty: 5 },
-    /* 90 */ { text: "\"Your bank transfer of $0.00 is complete. Review the transaction here.\"", correct: "risky", explanation: "Zero-dollar transaction notices are phishing bait.", difficulty: 5 },
-    /* 91 */ { text: "You receive a bank verification code even though you did not attempt a login.", correct: "risky", explanation: "Someone is trying to reset your password — never share codes.", difficulty: 5 },
-    /* 92 */ { text: "Your bank app shows an in-app alert about a login attempt. The alert has no links and tells you to review activity by opening the security section inside the app.", correct: "safe", explanation: "The alert itself is safe because it appears inside the official app and does not ask for codes or passwords. The login attempt may still mean you should change your password and enable 2FA.", difficulty: 4 },
-    /* 93 */ { text: "A charity website appears fully legitimate but uses an EIN that, when checked, belongs to a different organization.", correct: "risky", explanation: "Sophisticated scams copy real EINs to appear credible.", difficulty: 5 },
-    /* 94 */ { text: "Your credit union texts you a fraud alert and tells you to call a number that is only one digit off from your card’s official number.", correct: "risky", explanation: "Scammers use lookalike numbers. Always call the number printed on your card.", difficulty: 5 },
-    /* 95 */ { text: "Your bank emails you new terms and conditions with no links — it instructs you to log into your app manually.", correct: "safe", explanation: "Safe emails contain no clickable links and advise manual login.", difficulty: 3 },
-    /* 96 */ { text: "A lender with a real license number offers a low interest rate, but before you complete any official application, they ask you to text or email a copy of your ID.", correct: "risky", explanation: "Scammers can copy real license numbers. Sending ID before a verified application through a secure official process is risky.", difficulty: 5 },
-    /* 97 */ { text: "A friend refers you to a financial mentor who helped them — but the mentor wants you to send money “to demonstrate commitment.”", correct: "risky", explanation: "Warm introductions can come from hacked accounts — upfront payments are a major red flag.", difficulty: 5 },
-    /* 98 */ { text: "An eBay seller asks you to pay using PayPal Friends & Family to avoid seller fees.", correct: "risky", explanation: "Friends & Family eliminates buyer protection — a subtle advanced scam.", difficulty: 4 },
-    /* 99 */ { text: "A voicemail states the last 4 digits of your SSN were used in a suspicious application and tells you to call back immediately.", correct: "risky", explanation: "Scammers often use partial real data to build trust — never call numbers from unsolicited messages.", difficulty: 5 },
-    /* 100 */ { text: "A text asks, “Did you attempt a bank login?” with no link. Responding triggers a second message asking for your full username.", correct: "risky", explanation: "Advanced multi-step phishing starts innocently before requesting credentials.", difficulty: 5 }
+
+/* -----------------------------  
+   EASY LEVEL (Difficulty 1–2)  
+------------------------------*/
+
+/* 1 */ 
+{
+  text:
+    "An email claims to be from your bank:\n\n" +
+    "\"Click this link urgently to verify your login or your account will be locked.\"\n\n" +
+    "Sender: security@bank-support-secure.com",
+  correct: "risky",
+  explanation:
+    "Urgent login links and strange sender addresses are classic phishing signs. Open your bank app or type the bank website yourself instead.",
+  difficulty: 1
+},
+
+/* 2 */ 
+{
+  text:
+    "Your banking app notifies you inside the official app:\n\n" +
+    "\"We detected a small charge. Was this you?\"\n\n" +
+    "You review the charge in the app and tap “No” if it is not you.",
+  correct: "safe",
+  explanation:
+    "Reviewing suspicious charges inside your official banking app is a safer way to respond. Never share passwords, PINs, or codes with anyone.",
+  difficulty: 1
+},
+
+/* 3 */ 
+{
+  text:
+    "\"You have WON a $1,000 gift card! Send a $25 fee via Zelle or Cash App to claim your prize right now!\"",
+  correct: "risky",
+  explanation:
+    "A prize that requires an upfront fee is a major scam sign, especially when payment is requested through Zelle, Cash App, gift cards, or crypto.",
+  difficulty: 1
+},
+
+/* 4 */ 
+{
+  text:
+    "A caller says they are from \"Social Security Investigations\" and claims:\n\n" +
+    "\"Your Social Security number is suspended. Verify it now or lose benefits.\"",
+  correct: "risky",
+  explanation:
+    "Social Security numbers do not get suspended like this. Unsolicited calls asking you to verify sensitive information are risky.",
+  difficulty: 1
+},
+
+/* 5 */ 
+{
+  text:
+    "A “recruiter” messages you about a job paying double the normal rate.\n" +
+    "They send a check and ask you to buy gift cards and send the codes.",
+  correct: "risky",
+  explanation:
+    "Fake job scams often use fake checks, overpayments, gift cards, and pressure. Real employers do not ask new hires to send gift card codes.",
+  difficulty: 1
+},
+
+/* 6 */ 
+{
+  text:
+    "You receive a letter from your current mortgage company with your real loan number.\n" +
+    "It does not demand urgent payment, does not ask you to call a new number, and the details match your official mortgage statement.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it matches known account information and does not pressure you. When unsure, verify using the number or website on your official statement.",
+  difficulty: 2
+},
+
+/* 7 */ 
+{
+  text:
+    "A salesperson offers you a reverse mortgage and says:\n\n" +
+    "\"Sign today to lock in a special rate — don’t worry about the fine print.\"",
+  correct: "risky",
+  explanation:
+    "Pressure to sign quickly and ignore details is a major warning sign, especially with loans, mortgages, or financial contracts.",
+  difficulty: 2
+},
+
+/* 8 */ 
+{
+  text:
+    "You type your investment website's URL manually, see https + lock icon, and use two-factor authentication.",
+  correct: "safe",
+  explanation:
+    "Typing the website yourself and using two-factor authentication are safer habits. The lock icon helps, but you still need to make sure the website address is correct.",
+  difficulty: 1
+},
+
+/* 9 */ 
+{
+  text:
+    "A charity email asks for cryptocurrency donations after a disaster.",
+  correct: "risky",
+  explanation:
+    "Disaster scams often ask for fast donations through unusual payment methods. Verify the charity first and donate through its official website.",
+  difficulty: 2
+},
+
+/* 10 */ 
+{
+  text:
+    "Your \"grandchild\" texts from a new number asking for emergency money and says not to call their parents.",
+  correct: "risky",
+  explanation:
+    "Emergency money requests with secrecy are a classic scam pattern. Call the person or another trusted family member using a number you already know.",
+  difficulty: 1
+},
+
+/* 11 */ 
+{
+  text:
+    "A text says your Amazon order can't be delivered.\nLink: http://amaz0n-verify-orders.com",
+  correct: "risky",
+  explanation:
+    "The fake domain uses a zero instead of the letter O. Lookalike links are used to steal logins, payment details, or personal information.",
+  difficulty: 2
+},
+
+/* 12 */ 
+{
+  text:
+    "You get an email receipt for a subscription you never purchased, with a number to call to cancel.",
+  correct: "risky",
+  explanation:
+    "Fake invoice scams try to make you panic and call a scam center. Check your real account or payment card directly instead.",
+  difficulty: 2
+},
+
+/* 13 */ 
+{
+  text:
+    "A neighbor you know personally asks to borrow money for groceries.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it is a direct request from someone you personally know. Still use judgment if there is pressure, secrecy, or an unusual payment method.",
+  difficulty: 1
+},
+
+/* 14 */ 
+{
+  text:
+    "An email from 'PayPaI Support' uses a capital I instead of L.",
+  correct: "risky",
+  explanation:
+    "Scammers use lookalike letters and names to imitate real companies. Do not click links from suspicious sender names.",
+  difficulty: 2
+},
+
+/* 15 */ 
+{
+  text:
+    "A text claims your driver’s license is suspended if you don’t click a provided link.",
+  correct: "risky",
+  explanation:
+    "Unexpected license threats by text are risky. Use your state or local motor vehicle agency’s official website instead of the link.",
+  difficulty: 2
+},
+
+/* 16 */ 
+{
+  text:
+    "You call your bank using the number printed on your card and speak to a rep.",
+  correct: "safe",
+  explanation:
+    "Calling the number printed on your card is safer than calling a number from a text, email, pop-up, or voicemail.",
+  difficulty: 1
+},
+
+/* 17 */ 
+{
+  text:
+    "Your phone carrier says your bill is overdue and uses a .xyz link.",
+  correct: "risky",
+  explanation:
+    "A strange or unexpected payment link is risky. Open your carrier’s official app or type the official website yourself.",
+  difficulty: 2
+},
+
+/* 18 */ 
+{
+  text:
+    "Your Netflix account payment supposedly failed, and the email directs you to a link not ending in netflix.com.",
+  correct: "risky",
+  explanation:
+    "A mismatched domain is a phishing sign. Go to the official app or type the real website yourself to check billing.",
+  difficulty: 2
+},
+
+/* 19 */ 
+{
+  text:
+    "A nonprofit you donated to last year emails you from its verified domain.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it matches an organization you know and uses its official domain. For donations, the safest move is still to visit the official website yourself.",
+  difficulty: 1
+},
+
+/* 20 */ 
+{
+  text:
+    "A Facebook friend asks for emergency money — but their message doesn’t sound like them.",
+  correct: "risky",
+  explanation:
+    "Hacked social media accounts often send urgent money requests. Verify with your friend another way before sending anything.",
+  difficulty: 2
+},
+
+/* 21 */ 
+{
+  text:
+    "A website offers extremely discounted shoes and was created 2 weeks ago.",
+  correct: "risky",
+  explanation:
+    "A very new store plus unrealistic discounts is a scam warning sign. Search for independent reviews and verify the seller before buying.",
+  difficulty: 2
+},
+
+/* 22 */ 
+{
+  text:
+    "You get a PDF invoice for something you never bought.",
+  correct: "risky",
+  explanation:
+    "Unexpected invoices and attachments can lead to phishing, malware, or scam call centers. Do not open attachments unless you trust the source.",
+  difficulty: 2
+},
+
+/* 23 */ 
+{
+  text:
+    "A family member asks for your new phone number with no links or requests.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because there are no links, payment requests, codes, passwords, or personal financial details involved.",
+  difficulty: 1
+},
+
+/* 24 */ 
+{
+  text:
+    "An automated call says you qualify for a government grant — press 1 to claim.",
+  correct: "risky",
+  explanation:
+    "Unexpected robocalls offering government money are risky. Real grant programs do not randomly call and pressure people to claim money.",
+  difficulty: 1
+},
+
+/* 25 */ 
+{
+  text:
+    "Your debit card company sends a fraud alert inside the official banking app asking whether a small suspicious charge was yours.",
+  correct: "safe",
+  explanation:
+    "Fraud alerts inside the official app are a safer way to confirm suspicious activity. Never share codes, PINs, or passwords by text or phone.",
+  difficulty: 2
+},
+
+/* 26 */ 
+{
+  text:
+    "A PDF labeled “Property Tax Refund” arrives unexpectedly.",
+  correct: "risky",
+  explanation:
+    "Unexpected tax refund messages or attachments are risky. Verify through your official tax office website or known contact information.",
+  difficulty: 2
+},
+
+/* 27 */ 
+{
+  text:
+    "You receive a welcome email from a site you signed up for earlier today.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because you initiated the signup. Still make sure the sender and website match the service you joined.",
+  difficulty: 1
+},
+
+/* 28 */ 
+{
+  text:
+    "\"Your package is waiting. Pay $3 redelivery fee here: usps-redelivery-update.com\"",
+  correct: "risky",
+  explanation:
+    "Fake delivery texts often use lookalike domains and small fees to steal payment information. Check delivery status through the official website or app.",
+  difficulty: 1
+},
+
+/* 29 */ 
+{
+  text:
+    "A caller pretending to be police demands gift card payment for a fine.",
+  correct: "risky",
+  explanation:
+    "Police and courts do not collect fines through gift cards. Gift card payment demands are a major scam sign.",
+  difficulty: 1
+},
+
+/* 30 */ 
+{
+  text:
+    "You manually access irs.gov yourself to read tax information.",
+  correct: "safe",
+  explanation:
+    "Typing the official government website yourself is safer than using links from texts, emails, or pop-ups.",
+  difficulty: 1
+},
+
+/* 31 */ 
+{
+  text:
+    "\"Same-day $5,000 loan! No credit check! Pay $50 processing fee!\"",
+  correct: "risky",
+  explanation:
+    "A loan that requires upfront payment before approval is a major scam warning sign.",
+  difficulty: 2
+},
+
+/* 32 */ 
+{
+  text:
+    "Your bank emails your monthly statement from its official domain.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk if the message matches your normal bank statement pattern. For safety, open the bank app or website yourself instead of clicking links.",
+  difficulty: 1
+},
+
+/* 33 */ 
+{
+  text:
+    "A stranger messages you claiming they sent you money on Cash App by mistake and want it refunded.",
+  correct: "risky",
+  explanation:
+    "Refund scams can involve stolen accounts, fake payments, or reversed transactions. Do not send money back outside the app’s official dispute process.",
+  difficulty: 2
+},
+
+/* 34 */ 
+{
+  text:
+    "\"Your Apple ID has been locked. Verify now: apple-securecenter.com\"",
+  correct: "risky",
+  explanation:
+    "The link is not Apple’s official domain. Go directly to your Apple account or device settings to check security alerts.",
+  difficulty: 2
+},
+
+/* 35 */ 
+{
+  text:
+    "You receive a password-reset email from a site after YOU initiated it.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because you requested the reset. If you did not request it, treat it as a warning that someone may be trying to access your account.",
+  difficulty: 1
+},
+
+/* 36 */ 
+{
+  text:
+    "A recruiter messages you on LinkedIn from a real company domain. Instead of giving personal information in the chat, you manually visit the company’s official careers page and find the same job posted there.",
+  correct: "safe",
+  explanation:
+    "Verifying the job through the official company careers page is safer than trusting links, checks, or attachments in a message.",
+  difficulty: 2
+},
+
+/* 37 */ 
+{
+  text:
+    "\"Your bank account is frozen. Confirm username and password urgently.\"\nFrom a Gmail address.",
+  correct: "risky",
+  explanation:
+    "A bank message from a free email account plus a request for your username and password is a phishing sign.",
+  difficulty: 2
+},
+
+/* 38 */ 
+{
+  text:
+    "A caller threatens to disconnect your electricity unless you pay immediately with Zelle.",
+  correct: "risky",
+  explanation:
+    "Utility shutoff threats combined with instant payment demands are a common scam pattern. Call the utility using the official number on your bill.",
+  difficulty: 2
+},
+
+/* 39 */ 
+{
+  text:
+    "Your doctor’s office sends an appointment reminder for a date you booked.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it matches an appointment you scheduled. Do not share medical, insurance, or payment details unless you verify the office.",
+  difficulty: 1
+},
+
+/* 40 */ 
+{
+  text:
+    "A pop-up claims Microsoft detected a virus and urges you to call a phone number.",
+  correct: "risky",
+  explanation:
+    "Tech support pop-ups are a common scam. Close the window and run your own trusted security tools instead of calling the number.",
+  difficulty: 2
+},
+
+/* 41 */ 
+{
+  text:
+    "A friend’s Instagram account advertises a crypto doubling scheme.",
+  correct: "risky",
+  explanation:
+    "Crypto doubling offers are scams, even when posted by someone you know. Their account may be hacked.",
+  difficulty: 2
+},
+
+/* 42 */ 
+{
+  text:
+    "A verified nonprofit posts a fundraiser using its official social media account, and you manually visit the nonprofit’s official website before donating.",
+  correct: "safe",
+  explanation:
+    "This is safer because you are not trusting the social post alone. You verify the nonprofit and donate through its official website.",
+  difficulty: 1
+},
+
+/* 43 */ 
+{
+  text:
+    "\"Claim your free iPhone! Pay $12 shipping to receive it.\"",
+  correct: "risky",
+  explanation:
+    "Free prize offers that require payment are a common scam pattern. The small fee is often used to steal card information.",
+  difficulty: 1
+},
+
+/* 44 */ 
+{
+  text:
+    "Your employer emails you from the official company domain about required training and tells you to log into the normal employee portal you already use.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it uses a known work channel and directs you to the normal portal. Be careful with unexpected attachments or password requests.",
+  difficulty: 1
+},
+
+/* 45 */ 
+{
+  text:
+    "\"This is the IRS. Pay now or face immediate arrest.\"",
+  correct: "risky",
+  explanation:
+    "Threats of immediate arrest and demands for instant payment are scam signs. Verify tax issues through the official IRS website or mailed notices.",
+  difficulty: 1
+},
+
+/* 46 */ 
+{
+  text:
+    "Your credit card app alerts you to a suspicious purchase and asks you to confirm through the app.",
+  correct: "safe",
+  explanation:
+    "Confirming suspicious activity inside the official card app is safer than responding to random texts, calls, or emails.",
+  difficulty: 1
+},
+
+/* 47 */ 
+{
+  text:
+    "A fake PayPal message uses a domain like paypal-resolution-center.net.",
+  correct: "risky",
+  explanation:
+    "That is not the normal PayPal domain. Open PayPal directly through the official app or by typing the website yourself.",
+  difficulty: 2
+},
+
+/* 48 */ 
+{
+  text:
+    "Your bank declines a suspicious charge while you’re traveling and notifies you in-app.",
+  correct: "safe",
+  explanation:
+    "An in-app alert from the official bank app is a safer way to review suspicious activity. Do not share codes or passwords with anyone who calls you.",
+  difficulty: 1
+},
+
+/* 49 */ 
+{
+  text:
+    "\"You have an unclaimed inheritance. Provide your SSN to release the funds.\"",
+  correct: "risky",
+  explanation:
+    "Unexpected inheritance messages asking for sensitive information are identity theft risks.",
+  difficulty: 2
+},
+
+/* 50 */ 
+{
+  text:
+    "Your email provider warns your inbox is nearly full and tells you to check storage by opening the official app or website yourself.",
+  correct: "safe",
+  explanation:
+    "This is safer because it does not push an unknown link. Use the official app or manually typed website to check account storage.",
+  difficulty: 1
+},
+
+/* 51 */
+{
+  text:
+    "A buyer on Facebook Marketplace sends extra money and asks you to refund the difference through Zelle or Cash App.",
+  correct: "risky",
+  explanation:
+    "Overpayment scams often use fake or reversible payments. Do not refund extra money outside the platform’s official process.",
+  difficulty: 3
+},
+
+/* 52 */
+{
+  text:
+    "Your bank texts you about a locked account, but the link uses a misspelled version of the bank’s domain.",
+  correct: "risky",
+  explanation:
+    "Misspelled bank domains are used to steal logins. Open your bank app or type the official website yourself.",
+  difficulty: 3
+},
+
+/* 53 */
+{
+  text:
+    "Your child’s school emails you using its official district domain with schedule updates and no payment request.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it is a routine update from a known school domain. Be cautious if a message asks for money, passwords, or sensitive documents.",
+  difficulty: 1
+},
+
+/* 54 */
+{
+  text:
+    "A caller claiming to be your bank asks for your debit card PIN to verify your identity.",
+  correct: "risky",
+  explanation:
+    "Your PIN should never be shared with a caller. Hang up and call the number on the back of your card.",
+  difficulty: 3
+},
+
+/* 55 */
+{
+  text:
+    "You verify a family member’s medical fundraiser by speaking to them directly before donating.",
+  correct: "safe",
+  explanation:
+    "Directly confirming the fundraiser with the person or family lowers the risk. Donate through a verified page or official method.",
+  difficulty: 1
+},
+
+/* 56 */
+{
+  text:
+    "\"Your Social Security benefits will increase. Confirm your personal information to process the update.\"",
+  correct: "risky",
+  explanation:
+    "Unsolicited messages asking for Social Security or benefit information are risky. Use official Social Security channels to check your account.",
+  difficulty: 2
+},
+
+/* 57 */
+{
+  text:
+    "A pop-up on a website claims your smartphone is infected and urges immediate action.",
+  correct: "risky",
+  explanation:
+    "Fake virus pop-ups try to scare you into installing malware or calling scammers. Close the page and use trusted device settings or security tools.",
+  difficulty: 2
+},
+
+/* 58 */
+{
+  text:
+    "Your credit card app alerts you about a suspicious transaction and offers buttons INSIDE the app to confirm or deny it.",
+  correct: "safe",
+  explanation:
+    "Using the official app to confirm or deny suspicious activity is safer than responding through unknown links or calls.",
+  difficulty: 1
+},
+
+/* 59 */
+{
+  text:
+    "\"Unauthorized login attempt detected. Log in at: bank-login-security-check.com to secure your account.\"",
+  correct: "risky",
+  explanation:
+    "The domain does not look like an official bank website. Fake security alerts are often used to steal usernames and passwords.",
+  difficulty: 3
+},
+
+/* 60 */
+{
+  text:
+    "You see a QR code flyer claiming to offer free gift cards for scanning.",
+  correct: "risky",
+  explanation:
+    "Random QR codes can lead to phishing pages or fake giveaways. Do not scan codes from untrusted flyers.",
+  difficulty: 3
+},
+
+/* -----------------------------
+   MODERATE / HARD (Difficulty 3–4)
+------------------------------*/
+
+/* 61 */
+{
+  text:
+    "\"We detected unusual activity on your Zelle account. Verify by entering your bank login information here.\"",
+  correct: "risky",
+  explanation:
+    "A request to enter bank login information through an unexpected link is risky. Open your bank app directly instead.",
+  difficulty: 3
+},
+
+/* 62 */
+{
+  text:
+    "Your HR department emails you from the company domain and tells you to log into the official HR/payroll portal you already use to update onboarding tax documents.",
+  correct: "safe",
+  explanation:
+    "Updating tax documents through a known official HR portal is safer than sending personal documents by email or through unknown links.",
+  difficulty: 1
+},
+
+/* 63 */
+{
+  text:
+    "A random person on Cash App claims they sent you money by mistake and wants a refund.",
+  correct: "risky",
+  explanation:
+    "Unexpected refund requests from strangers are risky. Use the app’s official support or dispute process instead of sending money back manually.",
+  difficulty: 3
+},
+
+/* 64 */
+{
+  text:
+    "\"Your car warranty has expired. Renew immediately to avoid lapse!\" Caller refuses to provide company details.",
+  correct: "risky",
+  explanation:
+    "A caller who pressures you but refuses basic company details is a red flag. Verify any warranty through your vehicle paperwork or dealer.",
+  difficulty: 2
+},
+
+/* 65 */
+{
+  text:
+    "A trusted family member sends you a video you were expecting with no suspicious links, downloads, login pages, or payment requests.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it is expected and has no suspicious request. Be cautious if a file asks you to install something or log in.",
+  difficulty: 1
+},
+
+/* 66 */
+{
+  text:
+    "An email says you missed jury duty and must pay a fine online to avoid arrest.",
+  correct: "risky",
+  explanation:
+    "Jury duty scams use fear of arrest to pressure payment. Contact the court directly through its official website or phone number.",
+  difficulty: 3
+},
+
+/* 67 */
+{
+  text:
+    "\"Your Geek Squad subscription has been renewed for $349. Call immediately to cancel.\" Caller wants remote access to your computer.",
+  correct: "risky",
+  explanation:
+    "Fake renewal notices often lead to tech support scams. Never give remote access because of an unexpected invoice or phone call.",
+  difficulty: 3
+},
+
+/* 68 */
+{
+  text:
+    "\"You qualify for federal loan forgiveness. Pay a $99 processing fee to enroll today.\"",
+  correct: "risky",
+  explanation:
+    "Upfront processing fees for loan forgiveness are a scam warning sign. Use official government or loan servicer websites.",
+  difficulty: 3
+},
+
+/* 69 */
+{
+  text:
+    "Your online pharmacy sends a refill reminder for medication you actually requested.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it matches a refill you requested. Use the official pharmacy app or website if you need to take action.",
+  difficulty: 1
+},
+
+/* 70 */
+{
+  text:
+    "A scammer claiming to be Apple Support says your iCloud was hacked and directs you to a special site.",
+  correct: "risky",
+  explanation:
+    "Unsolicited support messages directing you to a special website are risky. Check your account through your device settings or Apple’s official site.",
+  difficulty: 3
+},
+
+/* 71 */
+{
+  text:
+    "\"You won a luxury vacation! Pay taxes and fees today to claim your trip.\"",
+  correct: "risky",
+  explanation:
+    "Prizes that require upfront taxes or fees before you can claim them are a common scam pattern.",
+  difficulty: 2
+},
+
+/* 72 */
+{
+  text:
+    "Your credit union sends a secure message inside your online banking platform asking you to verify a new login.",
+  correct: "safe",
+  explanation:
+    "A secure message inside the official banking platform is safer than a random text or email. Review it only after logging in directly.",
+  difficulty: 2
+},
+
+/* 73 */
+{
+  text:
+    "\"We updated our privacy policy. Click here to continue accessing your account.\" Link is shortened and unrecognizable.",
+  correct: "risky",
+  explanation:
+    "Shortened or hidden links can disguise phishing pages. Go directly to the official website or app instead.",
+  difficulty: 3
+},
+
+/* 74 */
+{
+  text:
+    "A rental listing requires a deposit before you can tour the unit.",
+  correct: "risky",
+  explanation:
+    "Requests for deposits before a tour are a common rental scam sign. Verify the property, landlord, and lease process first.",
+  difficulty: 3
+},
+
+/* 75 */
+{
+  text:
+    "Your dentist’s office texts you the same appointment reminder format you are used to.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it matches a known appointment pattern. Do not provide payment or personal data unless you verify the office.",
+  difficulty: 1
+},
+
+/* 76 */
+{
+  text:
+    "\"Your package is on hold due to unpaid customs fees. Pay now to release.\"",
+  correct: "risky",
+  explanation:
+    "Fake delivery and customs messages pressure you to pay quickly. Check tracking through the official carrier website or app.",
+  difficulty: 2
+},
+
+/* 77 */
+{
+  text:
+    "A caller claims to be from your bank’s fraud department and asks for the last four digits of your SSN. You did not call them first.",
+  correct: "risky",
+  explanation:
+    "Unsolicited calls asking for identity details are risky, even if the caller sounds official. Hang up and call the number on your card.",
+  difficulty: 3
+},
+
+/* 78 */
+{
+  text:
+    "A retailer emails you a promo code after you signed up for their newsletter.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because you opted in. Still check that the sender and website match the real retailer before using links.",
+  difficulty: 1
+},
+
+/* 79 */
+{
+  text:
+    "A caller claiming to be from the county clerk’s office demands prepaid cards for “court fees.”",
+  correct: "risky",
+  explanation:
+    "Government offices do not demand prepaid cards for court fees. Prepaid card payment demands are a scam sign.",
+  difficulty: 2
+},
+
+/* 80 */
+{
+  text:
+    "Your cell phone carrier sends your monthly bill through its official domain.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk if it matches your normal billing pattern. To pay, open the carrier app or type the official website yourself.",
+  difficulty: 1
+},
+
+/* 81 */
+{
+  text:
+    "\"Unusual login attempt from overseas detected. Confirm your credentials to continue using your account.\"",
+  correct: "risky",
+  explanation:
+    "Security alerts that ask you to confirm credentials through a message are risky. Open the official app or website directly.",
+  difficulty: 3
+},
+
+/* 82 */
+{
+  text:
+    "A scammer sends you a picture of a fake Amazon return label demanding address confirmation.",
+  correct: "risky",
+  explanation:
+    "Fake shipping or return problems are used to collect personal information. Check orders inside your official Amazon account.",
+  difficulty: 3
+},
+
+/* 83 */
+{
+  text:
+    "\"Get $500 instantly! Only available for the next 5 minutes!\"",
+  correct: "risky",
+  explanation:
+    "Extreme time pressure and instant money promises are scam tactics. Slow down and verify before clicking or paying.",
+  difficulty: 2
+},
+
+/* 84 */
+{
+  text:
+    "Your pharmacy texts you that your prescription is ready — matching medication you actually take.",
+  correct: "safe",
+  explanation:
+    "This looks lower risk because it matches an expected prescription. Use the official pharmacy app or number if you need to respond.",
+  difficulty: 1
+},
+
+/* 85 */
+{
+  text:
+    "A caller tells you to “reverse” a fraudulent Zelle transfer by sending money to yourself.",
+  correct: "risky",
+  explanation:
+    "This is a known bank impersonation trick. Do not send money because a caller tells you it will reverse fraud.",
+  difficulty: 4
+},
+
+/* -----------------------------
+   EXTREME DIFFICULTY (5)
+------------------------------*/
+
+/* 86 */
+{
+  text:
+    "An email from your real bank domain warns of a new login and shows a link that appears correct. Hovering reveals a redirect to a foreign domain.",
+  correct: "risky",
+  explanation:
+    "The visible link and the real destination do not match. That is risky even if the email looks convincing.",
+  difficulty: 5
+},
+
+/* 87 */
+{
+  text:
+    "A caller knows your insurance policy number, address, and claim history, and asks to confirm your birthdate “for security.”",
+  correct: "risky",
+  explanation:
+    "Scammers can use leaked or stolen details to sound real. Do not confirm sensitive information to an unsolicited caller.",
+  difficulty: 5
+},
+
+/* 88 */
+{
+  text:
+    "A credit report website looks identical to a real bureau. HTTPS is present, and it has a privacy policy — but the company name is slightly off.",
+  correct: "risky",
+  explanation:
+    "HTTPS and a privacy policy do not prove a site is legitimate. A slightly wrong company name can signal a cloned website.",
+  difficulty: 5
+},
+
+/* 89 */
+{
+  text:
+    "You receive a DocuSign email you were expecting, but the subject line format is slightly different from your company’s usual template.",
+  correct: "risky",
+  explanation:
+    "Even expected document messages should be verified if the format looks unusual. Confirm through the sender or your official account before clicking.",
+  difficulty: 5
+},
+
+/* 90 */
+{
+  text:
+    "\"Your bank transfer of $0.00 is complete. Review the transaction here.\"",
+  correct: "risky",
+  explanation:
+    "Odd transaction alerts can be phishing bait. Check your account by opening the bank app or website directly.",
+  difficulty: 5
+},
+
+/* 91 */
+{
+  text:
+    "You receive a bank verification code even though you did not attempt a login.",
+  correct: "risky",
+  explanation:
+    "An unexpected verification code may mean someone is trying to access your account. Never share the code with anyone.",
+  difficulty: 5
+},
+
+/* 92 */
+{
+  text:
+    "Your bank app shows an in-app alert about a login attempt. The alert has no links and tells you to review activity by opening the security section inside the app.",
+  correct: "safe",
+  explanation:
+    "The alert itself is safer because it appears inside the official app and does not ask for codes or passwords. Review the activity and strengthen your account if needed.",
+  difficulty: 4
+},
+
+/* 93 */
+{
+  text:
+    "A charity website appears fully legitimate but uses an EIN that, when checked, belongs to a different organization.",
+  correct: "risky",
+  explanation:
+    "A mismatched EIN is a serious warning sign. Scammers may copy real nonprofit details to look legitimate.",
+  difficulty: 5
+},
+
+/* 94 */
+{
+  text:
+    "Your credit union texts you a fraud alert and tells you to call a number that is only one digit off from your card’s official number.",
+  correct: "risky",
+  explanation:
+    "Lookalike phone numbers are used to route victims to scammers. Call the number printed on your card instead.",
+  difficulty: 5
+},
+
+/* 95 */
+{
+  text:
+    "Your bank emails you new terms and conditions with no links — it instructs you to log into your app manually.",
+  correct: "safe",
+  explanation:
+    "This is safer because it does not push a link and tells you to use the official app manually.",
+  difficulty: 3
+},
+
+/* 96 */
+{
+  text:
+    "A lender with a real license number offers a low interest rate, but before you complete any official application, they ask you to text or email a copy of your ID.",
+  correct: "risky",
+  explanation:
+    "A real-looking license number does not prove the person contacting you is legitimate. Send ID only through a verified secure application process.",
+  difficulty: 5
+},
+
+/* 97 */
+{
+  text:
+    "A friend refers you to a financial mentor who helped them — but the mentor wants you to send money “to demonstrate commitment.”",
+  correct: "risky",
+  explanation:
+    "Warm introductions can still lead to scams. Upfront payments to prove commitment are a major red flag.",
+  difficulty: 5
+},
+
+/* 98 */
+{
+  text:
+    "An eBay seller asks you to pay using PayPal Friends & Family to avoid seller fees.",
+  correct: "risky",
+  explanation:
+    "Using Friends & Family for a purchase removes normal buyer protections. Keep payments inside the platform’s protected process.",
+  difficulty: 4
+},
+
+/* 99 */
+{
+  text:
+    "A voicemail states the last 4 digits of your SSN were used in a suspicious application and tells you to call back immediately.",
+  correct: "risky",
+  explanation:
+    "Scammers may use partial real information to sound convincing. Do not call numbers from unsolicited messages.",
+  difficulty: 5
+},
+
+/* 100 */
+{
+  text:
+    "A text asks, “Did you attempt a bank login?” with no link. Responding triggers a second message asking for your full username.",
+  correct: "risky",
+  explanation:
+    "Some scams start with a simple question before asking for credentials. Do not provide usernames, passwords, codes, or banking details by text.",
+  difficulty: 5
+}
+
   ];
 
   /* ===== helpers ===== */

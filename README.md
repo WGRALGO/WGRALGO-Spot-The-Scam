@@ -1,13 +1,20 @@
 # Spot the Scam
 
-**Version: 1.0.0**
+**Version: 1.0.1**
+
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
 A free offline Android scam-awareness game from **WGRALGO / The Wealth Gap Resolution Algorithm™ Inc.**
 
-Spot the Scam helps users practice recognizing common red flags in real-world
-scams involving money, identity, jobs, banking, charity, delivery messages,
-fake prizes, tech support, and urgent payment demands. It is designed for young
-adults, seniors, and families learning together.
+Spot the Scam was created as a free educational scam-awareness tool for young
+adults, seniors, families, serious people with limited resources, and serious
+people who do not support corporate greed. The app exists to help people
+practice recognizing real-world scam patterns without ads, tracking,
+subscriptions, paywalls, or data collection.
+
+It covers common red flags in scams involving money, identity, jobs, banking,
+charity, delivery messages, fake prizes, tech support, and urgent payment
+demands.
 
 ---
 
@@ -31,18 +38,24 @@ adults, seniors, and families learning together.
 
 ## Screenshots
 
-_Screenshots will be added here._
+> **Screenshots not yet captured.** The images below must be taken from the
+> running app on a device or emulator before the v1.0.1 release and committed
+> to the `screenshots/` folder. Replace these placeholders once captured.
 
-| Start | Question | Results |
-|-------|----------|---------|
-| _TBD_ | _TBD_    | _TBD_   |
+| Screen   | File                       | Status               |
+|----------|----------------------------|----------------------|
+| Start    | `screenshots/start.png`    | Needs capture        |
+| Question | `screenshots/question.png` | Needs capture        |
+| Feedback | `screenshots/feedback.png` | Needs capture        |
+| Results  | `screenshots/results.png`  | Needs capture        |
+| Privacy  | `screenshots/privacy.png`  | Needs capture        |
 
 ---
 
 ## Install / Sideload
 
-1. Download `SpotTheScam-v1.0.0.apk` from the
-   [GitHub Releases](../../releases) page (tag `v1.0.0`).
+1. Download `SpotTheScam-v1.0.1.apk` from the
+   [GitHub Releases](../../releases) page (tag `v1.0.1`).
 2. On your Android device, allow installation from your browser/file manager
    ("Install unknown apps").
 3. Open the downloaded APK and tap **Install**.
@@ -52,9 +65,30 @@ No account, sign-in, or network connection is required.
 
 ---
 
+## Verify Download
+
+SHA-256 for SpotTheScam-v1.0.1.apk:
+
+`e31ccacbce98eaedd7d119b09c311a51ba4af5de4065796f62942732dd3a0db0`
+
+Verify on your machine:
+
+```bash
+sha256sum -c SpotTheScam-v1.0.1.apk.sha256
+```
+
+---
+
 ## Build from source
 
 Requirements: JDK 17, Android SDK (build-tools 35.0.0), Node.js 20+.
+
+```bash
+npm install
+npm run build:release
+```
+
+Or step by step:
 
 ```bash
 npm install
@@ -94,8 +128,9 @@ keytool -genkeypair -v -keystore spotthescam-release.keystore \
   -alias spotthescam -keyalg RSA -keysize 2048 -validity 10000
 ```
 
-If no signing config is supplied, Gradle produces an unsigned release APK that
-you can sign manually with `apksigner`.
+If no signing config is supplied, Gradle produces an **unsigned** release APK
+(`app-release-unsigned.apk`). It will not install until signed manually with
+`apksigner`. Use a debug or signed release build for distribution.
 
 ---
 
@@ -124,8 +159,13 @@ development assistance and do not hold ownership of the project. See
 
 ## License
 
-MIT License. Copyright © WGRALGO / The Wealth Gap Resolution Algorithm™ Inc.
-See [LICENSE](LICENSE).
+**GNU General Public License v3.0.** Copyright © WGRALGO / The Wealth Gap
+Resolution Algorithm™ Inc. See [LICENSE](LICENSE).
+
+Spot the Scam is licensed under the GNU General Public License v3.0 so the app
+can remain free, open-source, and available for public education. Anyone may
+use, study, modify, and share it, but distributed versions must preserve the
+same open-source freedoms under GPLv3.
 
 ---
 

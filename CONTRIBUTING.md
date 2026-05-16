@@ -29,6 +29,13 @@ family-friendly, all contributions must follow these rules.
 4. Do not commit keystores, passwords, `local.properties`, signing configs, or
    any secrets.
 
+## License of contributions
+
+This project is licensed under the **GNU General Public License v3.0**
+(GPL-3.0-only). Contributions are accepted under GPLv3. By submitting a
+contribution, you agree that your contribution may be distributed as part of
+Spot the Scam under the GNU General Public License v3.0.
+
 ## Ownership
 
 This project is owned and maintained by WGRALGO / The Wealth Gap Resolution
