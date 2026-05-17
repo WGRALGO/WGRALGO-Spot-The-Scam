@@ -1,6 +1,6 @@
 # Spot the Scam
 
-**Version: 1.0.2**
+**Version: 1.0.3**
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
@@ -39,7 +39,8 @@ demands.
 ## Screenshots
 
 Captured from the app running on an Android device. (Game screens are
-unchanged in v1.0.2; this release only fixes the launcher icon.)
+unchanged in v1.0.3; recent patches only fix the launcher icon and the
+Android 12+ splash screen.)
 
 | Start | Question | Feedback |
 |-------|----------|----------|
@@ -53,8 +54,8 @@ unchanged in v1.0.2; this release only fixes the launcher icon.)
 
 ## Install / Sideload
 
-1. Download `SpotTheScam-v1.0.2.apk` from the
-   [GitHub Releases](../../releases) page (tag `v1.0.2`).
+1. Download `SpotTheScam-v1.0.3.apk` from the
+   [GitHub Releases](../../releases) page (tag `v1.0.3`).
 2. On your Android device, allow installation from your browser/file manager
    ("Install unknown apps").
 3. Open the downloaded APK and tap **Install**.
@@ -66,14 +67,14 @@ No account, sign-in, or network connection is required.
 
 ## Verify Download
 
-SHA-256 for SpotTheScam-v1.0.2.apk:
+SHA-256 for SpotTheScam-v1.0.3.apk:
 
-`37d5f78f3c4a4fb82ccd3d2b4d007083cc00d363c1343a6dd5f0653854cdff0b`
+`47f49bb59d737c06919c874f9d61ceba691fc68fd17d0975bd5af4d75acf5f98`
 
 Verify on your machine:
 
 ```bash
-sha256sum -c SpotTheScam-v1.0.2.apk.sha256
+sha256sum -c SpotTheScam-v1.0.3.apk.sha256
 ```
 
 ---
