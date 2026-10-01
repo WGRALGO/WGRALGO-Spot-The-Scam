@@ -39,8 +39,7 @@ demands.
 
 ## Screenshots
 
-Captured from v1.0.3. (v1.0.4 has a new app design and scenario bank;
-screenshots will be refreshed.)
+Captured from v1.0.4 at Android phone size (360dp wide, 1080×2547 PNG).
 
 | Start | Question | Feedback |
 |-------|----------|----------|

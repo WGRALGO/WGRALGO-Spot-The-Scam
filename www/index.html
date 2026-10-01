@@ -76,7 +76,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-left: 6px;
+    padding-left: 4px;
   }
   .app-bar-logo {
     width: 34px; height: 34px;
@@ -98,8 +98,8 @@
   .icon-btn svg { width: 24px; height: 24px; fill: var(--text); }
   .score-chip {
     flex: none;
-    margin-right: 8px;
-    padding: 6px 12px;
+    margin-right: 4px;
+    padding: 6px 10px;
     border-radius: 999px;
     background: var(--surface-3);
     font-size: 14px;
@@ -407,6 +407,8 @@
     font-size: 17px;
     font-weight: 800;
     letter-spacing: 0.01em;
+    white-space: nowrap;
+    padding: 0 12px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -430,7 +432,6 @@
   .btn-tonal {
     background: var(--surface-3);
     color: var(--gold-soft);
-    flex: 0.7;
   }
   .hidden { display: none !important; }
 
@@ -1599,7 +1600,7 @@
 
   function renderScenario() {
     var s = round[idx];
-    barTitle.textContent = "Question " + (idx + 1) + " of " + round.length;
+    barTitle.textContent = "Question " + (idx + 1) + "/" + round.length;
     progressFill.style.width = (idx / round.length * 100) + "%";
     iconEl.textContent = typeIcon(s.type);
     typeEl.textContent = s.type;
