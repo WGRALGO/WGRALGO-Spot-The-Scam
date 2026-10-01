@@ -1,6 +1,6 @@
 # Spot the Scam
 
-**Version: 1.0.3**
+**Version: 1.0.4**
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
@@ -20,12 +20,13 @@ demands.
 
 ## Features
 
-- 100 scam/safe scenarios
-- 10-question randomized rounds
-- Difficulty labels (Very Easy → Very Hard)
-- Instant feedback after each answer
-- Educational end-of-round score summary showing the question, your choice, the
-  correct answer, the result, and an explanation for every question
+- 100 real-life scam/safe scenarios (texts, emails, calls, letters, apps,
+  websites, social media, in person), 10 safe + 10 risky at each of 5 levels
+- Choose your level: All Levels, Beginner, Intermediate, or Expert
+- 10-question randomized rounds, balanced and ordered easy to hard
+- Instant feedback after each answer, with **Why** and **What to do**
+- End-of-round score ring and expandable review of every question
+- Native-style app design: app bar, progress bar, bottom action buttons
 - Offline-first
 - No ads
 - No analytics
@@ -38,9 +39,8 @@ demands.
 
 ## Screenshots
 
-Captured from the app running on an Android device. (Game screens are
-unchanged in v1.0.3; recent patches only fix the launcher icon and the
-Android 12+ splash screen.)
+Captured from v1.0.3. (v1.0.4 has a new app design and scenario bank;
+screenshots will be refreshed.)
 
 | Start | Question | Feedback |
 |-------|----------|----------|
@@ -54,8 +54,10 @@ Android 12+ splash screen.)
 
 ## Install / Sideload
 
-1. Download `SpotTheScam-v1.0.3.apk` from the
-   [GitHub Releases](../../releases) page (tag `v1.0.3`).
+1. Download `SpotTheScam-v1.0.4.apk` from the
+   [GitHub Releases](../../releases) page (tag `v1.0.4`).
+   **If you have v1.0.3 or older installed, uninstall it first.** v1.0.4 is
+   signed with a new release key, so it cannot install over older versions.
 2. On your Android device, allow installation from your browser/file manager
    ("Install unknown apps").
 3. Open the downloaded APK and tap **Install**.
@@ -67,15 +69,17 @@ No account, sign-in, or network connection is required.
 
 ## Verify Download
 
-SHA-256 for SpotTheScam-v1.0.3.apk:
-
-`47f49bb59d737c06919c874f9d61ceba691fc68fd17d0975bd5af4d75acf5f98`
-
-Verify on your machine:
+Each release attaches a `.sha256` file next to the APK. Download both, then:
 
 ```bash
-sha256sum -c SpotTheScam-v1.0.3.apk.sha256
+sha256sum -c SpotTheScam-v1.0.4.apk.sha256
 ```
+
+Release signing certificate (CN=WGRALGO), SHA-256 fingerprint from v1.0.4 onward:
+
+`F1:4B:A2:5D:6D:F1:32:BD:A5:47:A3:D2:C6:3B:11:3B:E7:5B:97:C8:43:D9:57:70:6B:9E:3E:0E:29:B9:27:45`
+
+Check it with `apksigner verify --print-certs SpotTheScam-v1.0.4.apk`.
 
 ---
 
@@ -127,6 +131,17 @@ Generate a keystore (once, kept private and off git):
 keytool -genkeypair -v -keystore spotthescam-release.keystore \
   -alias spotthescam -keyalg RSA -keysize 2048 -validity 10000
 ```
+
+### Publishing a release from GitHub
+
+The **Android Signed Release** workflow (`.github/workflows/release.yml`)
+builds, signs, validates, and publishes the APK to GitHub Releases. It reads
+the keystore from repository secrets (Settings → Secrets and variables →
+Actions): `STS_KEYSTORE_BASE64` (the keystore, base64-encoded),
+`STS_KEYSTORE_PASSWORD`, `STS_KEY_ALIAS`, and `STS_KEY_PASSWORD`. Bump the
+version in `package.json`, `android/app/build.gradle`, and
+`tools/validate-release.sh`, add `release-notes/v<version>.md`, then run the
+workflow from the Actions tab.
 
 If no signing config is supplied, Gradle produces an **unsigned** release APK
 (`app-release-unsigned.apk`). It will not install until signed manually with
