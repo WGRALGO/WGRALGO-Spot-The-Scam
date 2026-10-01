@@ -76,7 +76,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-left: 6px;
+    padding-left: 4px;
   }
   .app-bar-logo {
     width: 34px; height: 34px;
@@ -98,8 +98,8 @@
   .icon-btn svg { width: 24px; height: 24px; fill: var(--text); }
   .score-chip {
     flex: none;
-    margin-right: 8px;
-    padding: 6px 12px;
+    margin-right: 4px;
+    padding: 6px 10px;
     border-radius: 999px;
     background: var(--surface-3);
     font-size: 14px;
@@ -407,6 +407,8 @@
     font-size: 17px;
     font-weight: 800;
     letter-spacing: 0.01em;
+    white-space: nowrap;
+    padding: 0 12px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
@@ -430,7 +432,6 @@
   .btn-tonal {
     background: var(--surface-3);
     color: var(--gold-soft);
-    flex: 0.7;
   }
   .hidden { display: none !important; }
 
@@ -679,7 +680,7 @@
   </div>
 
   <div class="home-footer">
-    Spot the Scam v1.0.4 &middot; WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.<br>
+    Spot the Scam v1.0.5 &middot; WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.<br>
     For education and awareness only. Not professional financial, legal, cybersecurity, or law-enforcement advice.
   </div>
 </main>
@@ -776,7 +777,7 @@
   <h3>About</h3>
   <p>Spot the Scam is a free educational scam-awareness game created by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc. It helps users practice spotting common red flags in scams involving money, identity, jobs, banking, delivery messages, fake prizes, tech support, and urgent payment demands.</p>
   <p>100 practice scenarios across 5 difficulty levels. All company names like &ldquo;Harbor Point Bank&rdquo; are made up for practice.</p>
-  <p class="muted">Spot the Scam v1.0.4 &mdash; a free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
+  <p class="muted">Spot the Scam v1.0.5 &mdash; a free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
   <button class="btn btn-tonal" data-close>Close</button>
 </div>
 
@@ -798,7 +799,7 @@
 <div id="wgra-modal-credits" class="sheet" role="dialog" aria-modal="true" aria-label="Credits">
   <div class="sheet-handle"></div>
   <h3>Credits</h3>
-  <p><strong>Spot the Scam v1.0.4</strong><br>A free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
+  <p><strong>Spot the Scam v1.0.5</strong><br>A free educational scam-awareness game by WGRALGO / The Wealth Gap Resolution Algorithm&trade; Inc.</p>
   <p><strong>Contributors</strong></p>
   <ul>
     <li><strong>WGRALGO</strong> &mdash; Project owner, creator, maintainer, content direction, testing, and public-benefit mission.</li>
@@ -1599,7 +1600,7 @@
 
   function renderScenario() {
     var s = round[idx];
-    barTitle.textContent = "Question " + (idx + 1) + " of " + round.length;
+    barTitle.textContent = "Question " + (idx + 1) + "/" + round.length;
     progressFill.style.width = (idx / round.length * 100) + "%";
     iconEl.textContent = typeIcon(s.type);
     typeEl.textContent = s.type;
