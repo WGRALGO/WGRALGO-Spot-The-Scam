@@ -46,8 +46,8 @@ NODE
 
 echo "== Source / build config =="
 GR=android/app/build.gradle
-grep -q 'versionName "1.0.5"' $GR && ok "versionName 1.0.5" || bad "versionName not 1.0.5"
-grep -q 'versionCode 105' $GR && ok "versionCode 104" || bad "versionCode not 105"
+grep -q 'versionName "2.0.0"' $GR && ok "versionName 2.0.0" || bad "versionName not 2.0.0"
+grep -q 'versionCode 200' $GR && ok "versionCode 200" || bad "versionCode not 200"
 grep -q 'applicationId "com.wgra.spotthescam"' $GR && ok "appId com.wgra.spotthescam" || bad "appId wrong"
 grep -q 'debuggable false' $GR && ok "release debuggable false" || bad "release not debuggable false"
 grep -q 'minifyEnabled true' $GR && ok "minify enabled" || bad "minify not enabled"
@@ -77,13 +77,13 @@ grep -q 'WGRALGO' CONTRIBUTORS.md && grep -q 'ChatGPT' CONTRIBUTORS.md && grep -
 
 echo "== License (GPLv3) =="
 grep -q '"license": "GPL-3.0-only"' package.json && ok "package.json license GPL-3.0-only" || bad "package.json license not GPL-3.0-only"
-grep -q '"version": "1.0.5"' package.json && ok "package.json version 1.0.5" || bad "package.json version not 1.0.5"
+grep -q '"version": "2.0.0"' package.json && ok "package.json version 2.0.0" || bad "package.json version not 2.0.0"
 grep -q 'GNU GENERAL PUBLIC LICENSE' LICENSE && grep -q 'Version 3' LICENSE \
   && ok "LICENSE contains GPLv3 text" || bad "LICENSE missing GPLv3 text"
 grep -q 'MIT License' LICENSE && bad "LICENSE still contains MIT text" || ok "LICENSE has no MIT text"
 grep -Eq '\bMIT\b|\bISC\b' README.md && bad "README mentions MIT/ISC" || ok "README has no MIT/ISC"
 grep -q 'GNU General Public License v3' README.md && ok "README states GPLv3" || bad "README missing GPLv3 statement"
-grep -q '1.0.5' README.md && ok "README version 1.0.5" || bad "README missing 1.0.5"
+grep -q '2.0.0' README.md && ok "README version 2.0.0" || bad "README missing 2.0.0"
 if grep -E "classpath ['\"]com\.google\.gms:google-services" android/build.gradle | grep -vq '^\s*//'; then
   bad "active google-services classpath present"
 else
@@ -91,6 +91,11 @@ else
 fi
 grep -Eq "^\s*apply plugin: 'com.google.gms.google-services'" android/app/build.gradle \
   && bad "google-services plugin applied" || ok "google-services plugin not applied"
+
+echo "== Name and orientation =="
+grep -q '<string name="app_name">WGRALGO' android/app/src/main/res/values/strings.xml && bad "app name under the icon starts with WGRALGO" || ok "app name under the icon has no WGRALGO prefix"
+grep -q 'screenOrientation' android/app/src/main/AndroidManifest.xml && bad "orientation is locked" || ok "rotates freely (portrait and landscape)"
+grep -q 'WGRALGO-[A-Za-z]*-v' .github/workflows/release.yml && ok "APK named WGRALGO-<AppName>-v<version>.apk" || bad "APK name not uniform"
 
 if [ "${1:-}" != "" ] && [ -f "${1:-}" ]; then
   APK="$1"
@@ -100,8 +105,8 @@ if [ "${1:-}" != "" ] && [ -f "${1:-}" ]; then
   AAPT="$BT/aapt2"; APKSIGNER="$BT/apksigner"
   if [ -x "$AAPT" ]; then
     DUMP=$("$AAPT" dump badging "$APK" 2>/dev/null)
-    echo "$DUMP" | grep -q "versionName='1.0.5'" && ok "APK versionName 1.0.5" || bad "APK versionName wrong"
-    echo "$DUMP" | grep -q "versionCode='105'" && ok "APK versionCode 105" || bad "APK versionCode wrong"
+    echo "$DUMP" | grep -q "versionName='2.0.0'" && ok "APK versionName 2.0.0" || bad "APK versionName wrong"
+    echo "$DUMP" | grep -q "versionCode='200'" && ok "APK versionCode 200" || bad "APK versionCode wrong"
     echo "$DUMP" | grep -q "package: name='com.wgra.spotthescam'" && ok "APK package id" || bad "APK package id wrong"
     echo "$DUMP" | grep -q "uses-permission: name='android.permission.INTERNET'" \
       && bad "APK declares INTERNET" || ok "APK has no INTERNET permission"
