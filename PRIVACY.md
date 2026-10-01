@@ -1,6 +1,6 @@
 # Privacy Policy — Spot the Scam
 
-**Version 1.0.5**
+**Version 2.0.0**
 
 Spot the Scam is built to be private by design.
 
