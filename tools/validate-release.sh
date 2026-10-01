@@ -21,24 +21,33 @@ const P = (m) => console.log("  PASS  " + m);
 if (!m) { F("scenario array not found"); process.exit(1); }
 let arr = eval("[" + m[1] + "]");
 arr.length === 100 ? P("exactly 100 scenarios") : F("scenario count = " + arr.length);
-let structOk = arr.every(s => s.text && s.explanation &&
-  ["safe","risky"].includes(s.correct) && [1,2,3,4,5].includes(s.difficulty));
-structOk ? P("every scenario has valid text/correct/explanation/difficulty")
+let structOk = arr.every(s => s.type && s.text && s.why && s.todo &&
+  typeof s.from === "string" &&
+  ["safe","risky"].includes(s.answer) && [1,2,3,4,5].includes(s.level));
+structOk ? P("every scenario has valid type/from/text/why/todo/answer/level")
          : F("one or more scenarios invalid");
+let balanced = [1,2,3,4,5].every(lv =>
+  arr.filter(s => s.level === lv && s.answer === "safe").length === 10 &&
+  arr.filter(s => s.level === lv && s.answer === "risky").length === 10);
+balanced ? P("10 safe + 10 risky at every level")
+         : F("scenario levels are not balanced 10 safe / 10 risky");
 let texts = arr.map(s => s.text.trim());
 new Set(texts).size === texts.length ? P("no duplicate scenario text")
                                      : F("duplicate scenario text found");
-/var ROUND = 10;/.test(h) && /slice\(0, ROUND\)/.test(h)
+/var ROUND = 10;/.test(h) && /slice\(0, ROUND\)/.test(h) && /function buildRound\(mode\)/.test(h)
   ? P("round uses 10 random questions")
   : F("round size is not 10 random questions");
+["mixed","beginner","intermediate","expert"].every(m => h.includes('data-level="' + m + '"'))
+  ? P("level picker offers All/Beginner/Intermediate/Expert")
+  : F("level picker missing a level");
 process.exit(fails ? 1 : 0);
 NODE
-[ $? -eq 0 ] && PASS=$((PASS+4)) || FAIL=$((FAIL+1))
+[ $? -eq 0 ] && PASS=$((PASS+6)) || FAIL=$((FAIL+1))
 
 echo "== Source / build config =="
 GR=android/app/build.gradle
-grep -q 'versionName "1.0.3"' $GR && ok "versionName 1.0.3" || bad "versionName not 1.0.3"
-grep -q 'versionCode 103' $GR && ok "versionCode 103" || bad "versionCode not 103"
+grep -q 'versionName "1.0.4"' $GR && ok "versionName 1.0.4" || bad "versionName not 1.0.4"
+grep -q 'versionCode 104' $GR && ok "versionCode 104" || bad "versionCode not 104"
 grep -q 'applicationId "com.wgra.spotthescam"' $GR && ok "appId com.wgra.spotthescam" || bad "appId wrong"
 grep -q 'debuggable false' $GR && ok "release debuggable false" || bad "release not debuggable false"
 grep -q 'minifyEnabled true' $GR && ok "minify enabled" || bad "minify not enabled"
@@ -50,7 +59,7 @@ grep -q 'android:allowBackup="false"' $MAN && ok "allowBackup false" || bad "all
 grep -q 'dataExtractionRules' $MAN && ok "dataExtractionRules set" || bad "dataExtractionRules missing"
 
 IDX=www/index.html
-grep -qi 'gofundme' $IDX && bad "GoFundMe link in UI" || ok "no GoFundMe link"
+grep -Eqi 'gofundme\.com' $IDX && bad "GoFundMe link in UI" || ok "no GoFundMe link"
 grep -Eqi 'facebook\.com|instagram\.com|tiktok\.com|youtube\.com|linkedin\.com|x\.com/wealth' $IDX \
   && bad "social media link in UI" || ok "no social media links"
 grep -Eqi 'src="https?://|href="https?://|@import .https?://' $IDX \
@@ -68,13 +77,13 @@ grep -q 'WGRALGO' CONTRIBUTORS.md && grep -q 'ChatGPT' CONTRIBUTORS.md && grep -
 
 echo "== License (GPLv3) =="
 grep -q '"license": "GPL-3.0-only"' package.json && ok "package.json license GPL-3.0-only" || bad "package.json license not GPL-3.0-only"
-grep -q '"version": "1.0.3"' package.json && ok "package.json version 1.0.3" || bad "package.json version not 1.0.3"
+grep -q '"version": "1.0.4"' package.json && ok "package.json version 1.0.4" || bad "package.json version not 1.0.4"
 grep -q 'GNU GENERAL PUBLIC LICENSE' LICENSE && grep -q 'Version 3' LICENSE \
   && ok "LICENSE contains GPLv3 text" || bad "LICENSE missing GPLv3 text"
 grep -q 'MIT License' LICENSE && bad "LICENSE still contains MIT text" || ok "LICENSE has no MIT text"
 grep -Eq '\bMIT\b|\bISC\b' README.md && bad "README mentions MIT/ISC" || ok "README has no MIT/ISC"
 grep -q 'GNU General Public License v3' README.md && ok "README states GPLv3" || bad "README missing GPLv3 statement"
-grep -q '1.0.3' README.md && ok "README version 1.0.3" || bad "README missing 1.0.3"
+grep -q '1.0.4' README.md && ok "README version 1.0.4" || bad "README missing 1.0.4"
 if grep -E "classpath ['\"]com\.google\.gms:google-services" android/build.gradle | grep -vq '^\s*//'; then
   bad "active google-services classpath present"
 else
@@ -86,12 +95,13 @@ grep -Eq "^\s*apply plugin: 'com.google.gms.google-services'" android/app/build.
 if [ "${1:-}" != "" ] && [ -f "${1:-}" ]; then
   APK="$1"
   echo "== APK: $APK =="
-  BT=$(ls -d "$HOME"/Android/Sdk/build-tools/* 2>/dev/null | sort -V | tail -1)
+  SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-$HOME/Android/Sdk}}"
+  BT=$(ls -d "$SDK"/build-tools/* 2>/dev/null | sort -V | tail -1)
   AAPT="$BT/aapt2"; APKSIGNER="$BT/apksigner"
   if [ -x "$AAPT" ]; then
     DUMP=$("$AAPT" dump badging "$APK" 2>/dev/null)
-    echo "$DUMP" | grep -q "versionName='1.0.3'" && ok "APK versionName 1.0.3" || bad "APK versionName wrong"
-    echo "$DUMP" | grep -q "versionCode='103'" && ok "APK versionCode 103" || bad "APK versionCode wrong"
+    echo "$DUMP" | grep -q "versionName='1.0.4'" && ok "APK versionName 1.0.4" || bad "APK versionName wrong"
+    echo "$DUMP" | grep -q "versionCode='104'" && ok "APK versionCode 104" || bad "APK versionCode wrong"
     echo "$DUMP" | grep -q "package: name='com.wgra.spotthescam'" && ok "APK package id" || bad "APK package id wrong"
     echo "$DUMP" | grep -q "uses-permission: name='android.permission.INTERNET'" \
       && bad "APK declares INTERNET" || ok "APK has no INTERNET permission"

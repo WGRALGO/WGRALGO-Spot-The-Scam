@@ -1,6 +1,6 @@
 {
   "name": "spot-the-scam",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "index.js",
   "scripts": {
     "sync": "npx cap sync android",
