@@ -1,6 +1,6 @@
 # Screenshots
 
-Captured from Spot the Scam **v1.0.4** at Android phone size (360dp wide,
+Captured from Spot the Scam **v1.0.5** at Android phone size (360dp wide,
 1080×2547 PNG):
 
 - `start.png`: home screen with the level picker

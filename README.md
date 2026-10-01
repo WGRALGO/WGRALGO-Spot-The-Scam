@@ -1,6 +1,6 @@
 # Spot the Scam
 
-**Version: 1.0.4**
+**Version: 1.0.5**
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 
@@ -39,7 +39,7 @@ demands.
 
 ## Screenshots
 
-Captured from v1.0.4 at Android phone size (360dp wide, 1080×2547 PNG).
+Captured from v1.0.5 at Android phone size (360dp wide, 1080×2547 PNG).
 
 | Start | Question | Feedback |
 |-------|----------|----------|
@@ -53,10 +53,11 @@ Captured from v1.0.4 at Android phone size (360dp wide, 1080×2547 PNG).
 
 ## Install / Sideload
 
-1. Download `SpotTheScam-v1.0.4.apk` from the
-   [GitHub Releases](../../releases) page (tag `v1.0.4`).
-   **If you have v1.0.3 or older installed, uninstall it first.** v1.0.4 is
-   signed with a new release key, so it cannot install over older versions.
+1. Download `SpotTheScam-v1.0.5.apk` from the
+   [GitHub Releases](../../releases) page (tag `v1.0.5`).
+   **If you have v1.0.3 or older installed, uninstall it first.** Since v1.0.4
+   the app is signed with a new release key, so it cannot install over
+   v1.0.3 or older. It installs over v1.0.4 normally.
 2. On your Android device, allow installation from your browser/file manager
    ("Install unknown apps").
 3. Open the downloaded APK and tap **Install**.
@@ -71,14 +72,14 @@ No account, sign-in, or network connection is required.
 Each release attaches a `.sha256` file next to the APK. Download both, then:
 
 ```bash
-sha256sum -c SpotTheScam-v1.0.4.apk.sha256
+sha256sum -c SpotTheScam-v1.0.5.apk.sha256
 ```
 
 Release signing certificate (CN=WGRALGO), SHA-256 fingerprint from v1.0.4 onward:
 
 `F1:4B:A2:5D:6D:F1:32:BD:A5:47:A3:D2:C6:3B:11:3B:E7:5B:97:C8:43:D9:57:70:6B:9E:3E:0E:29:B9:27:45`
 
-Check it with `apksigner verify --print-certs SpotTheScam-v1.0.4.apk`.
+Check it with `apksigner verify --print-certs SpotTheScam-v1.0.5.apk`.
 
 ---
 
