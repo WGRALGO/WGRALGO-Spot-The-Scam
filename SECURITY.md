@@ -4,7 +4,7 @@
 
 Report security or privacy issues privately to:
 
-**wealthgapresolutionalgorithm@gmail.com**
+**info@thewealthgapresolutionalgorithm.org**
 
 Please include steps to reproduce and the app version. Do not open a public
 issue for sensitive reports.

@@ -187,4 +187,4 @@ same open-source freedoms under GPLv3.
 
 ## Contact
 
-wealthgapresolutionalgorithm@gmail.com
+info@thewealthgapresolutionalgorithm.org
