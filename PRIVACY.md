@@ -30,4 +30,4 @@ rules).
 
 ## Contact
 
-Privacy questions or concerns: wealthgapresolutionalgorithm@gmail.com
+Privacy questions or concerns: info@thewealthgapresolutionalgorithm.org
